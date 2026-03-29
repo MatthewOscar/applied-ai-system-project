@@ -1,33 +1,17 @@
-# 🎵 Music Recommender Simulation
+# Music Recommender Simulation
 
 ## Project Summary
 
-In this project you will build and explain a small music recommender system.
-
-Your goal is to:
-
-- Represent songs and a user "taste profile" as data
-- Design a scoring rule that turns that data into recommendations
-- Evaluate what your system gets right and wrong
-- Reflect on how this mirrors real world AI recommenders
-
-Replace this paragraph with your own summary of what your version does.
+A content-based music recommender that scores songs against a user taste profile using weighted genre, mood, and energy matching, then returns the top-ranked results with explanations.
 
 ---
 
 ## How The System Works
 
-Explain your design in plain language.
-
-Some prompts to answer:
-
-- What features does each `Song` use in your system
-  - For example: genre, mood, energy, tempo
-- What information does your `UserProfile` store
-- How does your `Recommender` compute a score for each song
-- How do you choose which songs to recommend
-
-You can include a simple diagram or bullet list if helpful.
+- **Song features:** genre, mood, energy (0-1), acousticness (0-1)
+- **User profile:** favorite genre, favorite mood, target energy, acoustic preference
+- **Scoring:** genre match +2.0, mood match +1.0, energy similarity up to +1.0, acoustic bonus +0.5
+- **Ranking:** sort all songs by score descending, return top k
 
 ---
 
@@ -35,78 +19,59 @@ You can include a simple diagram or bullet list if helpful.
 
 ### Setup
 
-1. Create a virtual environment (optional but recommended):
+1. Create a virtual environment:
 
    ```bash
-   python -m venv .venv
+   python3 -m venv .venv
    source .venv/bin/activate      # Mac or Linux
    .venv\Scripts\activate         # Windows
+   ```
 
-2. Install dependencies
+2. Install dependencies:
 
-```bash
-pip install -r requirements.txt
-```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 3. Run the app:
 
-```bash
-python -m src.main
-```
+   ```bash
+   python -m src.main
+   ```
 
 ### Running Tests
 
-Run the starter tests with:
-
 ```bash
-pytest
+pytest tests/test_recommender.py -v
 ```
-
-You can add more tests in `tests/test_recommender.py`.
 
 ---
 
 ## Experiments You Tried
 
-Use this section to document the experiments you ran. For example:
-
-- What happened when you changed the weight on genre from 2.0 to 0.5
-- What happened when you added tempo or valence to the score
-- How did your system behave for different types of users
+Genre weight shift (2.0 -> 0.5) for Pop Happy user: "Rooftop Lights" (mood match) jumped from #3 to #2, passing "Gym Hero" (genre match only). Confirms genre weight is the dominant ranking factor.
 
 ---
 
 ## Limitations and Risks
 
-Summarize some limitations of your recommender.
+- 10-song catalog, lofi/chill heavy
+- Exact genre matching only
+- No tempo, valence, or artist diversity in scoring
 
-Examples:
-
-- It only works on a tiny catalog
-- It does not understand lyrics or language
-- It might over favor one genre or mood
-
-You will go deeper on this in your model card.
+See [model_card.md](model_card.md) for more detail.
 
 ---
 
 ## Reflection
 
-Read and complete `model_card.md`:
-
-[**Model Card**](model_card.md)
-
-Write 1 to 2 paragraphs here about what you learned:
-
-- about how recommenders turn data into predictions
-- about where bias or unfairness could show up in systems like this
-
+See [model_card.md](model_card.md).
 
 ---
 
 ## 7. `model_card_template.md`
 
-Combines reflection and model card framing from the Module 3 guidance. :contentReference[oaicite:2]{index=2}  
+Combines reflection and model card framing from the Module 3 guidance. :contentReference[oaicite:2]{index=2}
 
 ```markdown
 # 🎧 Model Card - Music Recommender Simulation
@@ -208,4 +173,3 @@ A few sentences about what you learned:
 - What surprised you about how your system behaved
 - How did building this change how you think about real music recommenders
 - Where do you think human judgment still matters, even if the model seems "smart"
-
