@@ -47,14 +47,24 @@ def load_songs(csv_path: str) -> List[Dict]:
     return songs
 
 
-def score_song(song_genre: str, song_mood: str, song_energy: float,
-               song_acousticness: float,
-               user_genre: str, user_mood: str, user_energy: float,
-               user_likes_acoustic: bool = False,
+def score_song(user_prefs: Dict, song: Dict,
                weights: Optional[Dict[str, float]] = None) -> Tuple[float, List[str]]:
-    """Scores a single song against user preferences and returns (score, reasons)."""
+    """
+    Scores a single song against user preferences.
+    Required by recommend_songs() and src/main.py
+    """
     if weights is None:
         weights = {"genre": 2.0, "mood": 1.0, "energy": 1.0, "acoustic": 0.5}
+
+    user_genre = user_prefs.get('genre', '')
+    user_mood = user_prefs.get('mood', '')
+    user_energy = user_prefs.get('energy', 0.5)
+    user_likes_acoustic = user_prefs.get('likes_acoustic', False)
+
+    song_genre = song.get('genre', '')
+    song_mood = song.get('mood', '')
+    song_energy = song.get('energy', 0.5)
+    song_acousticness = song.get('acousticness', 0.0)
 
     score = 0.0
     reasons = []
@@ -86,17 +96,7 @@ def recommend_songs(user_prefs: Dict, songs: List[Dict], k: int = 5,
     """Scores all songs, ranks them, and returns the top k with explanations."""
     scored = []
     for song in songs:
-        song_score, reasons = score_song(
-            song_genre=song['genre'],
-            song_mood=song['mood'],
-            song_energy=song['energy'],
-            song_acousticness=song.get('acousticness', 0.0),
-            user_genre=user_prefs.get('genre', ''),
-            user_mood=user_prefs.get('mood', ''),
-            user_energy=user_prefs.get('energy', 0.5),
-            user_likes_acoustic=user_prefs.get('likes_acoustic', False),
-            weights=weights,
-        )
+        song_score, reasons = score_song(user_prefs, song, weights=weights)
         explanation = "; ".join(reasons)
         scored.append((song, song_score, explanation))
     scored.sort(key=lambda x: x[1], reverse=True)
@@ -111,34 +111,35 @@ class Recommender:
     def __init__(self, songs: List[Song]):
         self.songs = songs
 
+    @staticmethod
+    def _to_dicts(user: UserProfile, song: Song):
+        """Convert dataclass objects to dicts for score_song."""
+        user_dict = {
+            'genre': user.favorite_genre,
+            'mood': user.favorite_mood,
+            'energy': user.target_energy,
+            'likes_acoustic': user.likes_acoustic,
+        }
+        song_dict = {
+            'genre': song.genre,
+            'mood': song.mood,
+            'energy': song.energy,
+            'acousticness': song.acousticness,
+        }
+        return user_dict, song_dict
+
     def recommend(self, user: UserProfile, k: int = 5) -> List[Song]:
         """Returns the top k songs ranked by match to the user profile."""
         scored = []
         for song in self.songs:
-            song_score, _ = score_song(
-                song_genre=song.genre,
-                song_mood=song.mood,
-                song_energy=song.energy,
-                song_acousticness=song.acousticness,
-                user_genre=user.favorite_genre,
-                user_mood=user.favorite_mood,
-                user_energy=user.target_energy,
-                user_likes_acoustic=user.likes_acoustic,
-            )
+            user_dict, song_dict = self._to_dicts(user, song)
+            song_score, _ = score_song(user_dict, song_dict)
             scored.append((song, song_score))
         scored.sort(key=lambda x: x[1], reverse=True)
         return [s for s, _ in scored[:k]]
 
     def explain_recommendation(self, user: UserProfile, song: Song) -> str:
         """Returns a human-readable explanation for why a song was recommended."""
-        _, reasons = score_song(
-            song_genre=song.genre,
-            song_mood=song.mood,
-            song_energy=song.energy,
-            song_acousticness=song.acousticness,
-            user_genre=user.favorite_genre,
-            user_mood=user.favorite_mood,
-            user_energy=user.target_energy,
-            user_likes_acoustic=user.likes_acoustic,
-        )
+        user_dict, song_dict = self._to_dicts(user, song)
+        _, reasons = score_song(user_dict, song_dict)
         return "; ".join(reasons)
