@@ -9,3 +9,23 @@ id,title,artist,genre,mood,energy,tempo_bpm,valence,danceability,acousticness
 8,Night Drive Loop,Neon Echo,synthwave,moody,0.75,110,0.49,0.73,0.22
 9,Focus Flow,LoRoom,lofi,focused,0.40,80,0.59,0.60,0.78
 10,Rooftop Lights,Indigo Parade,indie pop,happy,0.76,124,0.81,0.82,0.35
+11,Golden Hour,Velvet Skies,r&b,romantic,0.55,96,0.78,0.72,0.45
+12,Bass Drop City,DJ Axiom,edm,euphoric,0.95,140,0.82,0.91,0.03
+13,Dust and Diesel,Prairie Wire,country,nostalgic,0.52,108,0.68,0.61,0.74
+14,Requiem in D,Aria Strings,classical,melancholy,0.22,66,0.30,0.20,0.97
+15,Iron Cage,Skull Voltage,metal,aggressive,0.97,170,0.25,0.42,0.06
+16,Backyard Summer,The Porch Band,folk,happy,0.48,104,0.75,0.55,0.88
+17,Neon Pulse,Synth Lords,edm,intense,0.89,138,0.60,0.85,0.04
+18,Slow Burn,Amber Nights,r&b,moody,0.50,88,0.62,0.68,0.52
+19,Southbound Train,Hank Rivers,country,relaxed,0.45,100,0.70,0.50,0.80
+20,Concrete Jungle,MC Flowstate,hip-hop,intense,0.85,130,0.55,0.78,0.12
+21,Late Night Jazz,Blue Note Trio,jazz,chill,0.30,76,0.67,0.48,0.93
+22,Campfire Stories,Timber Folk,folk,nostalgic,0.38,92,0.72,0.44,0.91
+23,Pixel Dreams,Chiptune Kid,electronic,happy,0.70,128,0.80,0.76,0.08
+24,Velvet Underground,Smooth Collective,r&b,relaxed,0.42,84,0.74,0.65,0.60
+25,Thunder Road,Voltline,rock,euphoric,0.88,148,0.72,0.70,0.14
+26,Still Waters,Orbit Bloom,ambient,melancholy,0.20,56,0.35,0.28,0.95
+27,Club Infinity,DJ Axiom,edm,euphoric,0.92,142,0.85,0.93,0.02
+28,Street Poetry,MC Flowstate,hip-hop,moody,0.72,98,0.50,0.74,0.18
+29,Morning Meadow,Paper Lanterns,folk,happy,0.44,102,0.76,0.52,0.85
+30,Moonlight Sonata Remix,Aria Strings,classical,relaxed,0.25,70,0.40,0.30,0.90

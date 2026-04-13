@@ -1,0 +1,272 @@
+[
+    {
+        "song_id": 1,
+        "title": "Sunrise City",
+        "artist": "Neon Echo",
+        "description": "An upbeat pop anthem with shimmering synths and a feel-good chorus. Perfect for morning commutes and sunny weekend drives.",
+        "similar_artists": ["Carly Rae Jepsen", "CHVRCHES"],
+        "best_for": ["morning playlists", "road trips", "working out"],
+        "vibe_tags": ["uplifting", "bright", "nostalgic"]
+    },
+    {
+        "song_id": 2,
+        "title": "Midnight Coding",
+        "artist": "LoRoom",
+        "description": "A mellow lofi beat with soft piano loops and vinyl crackle. Ideal background music for late-night study or coding sessions.",
+        "similar_artists": ["Nujabes", "Idealism"],
+        "best_for": ["studying", "coding", "late nights"],
+        "vibe_tags": ["calm", "focused", "atmospheric"]
+    },
+    {
+        "song_id": 3,
+        "title": "Storm Runner",
+        "artist": "Voltline",
+        "description": "A high-octane rock track with heavy guitar riffs and driving drums. Built for adrenaline and pushing through tough workouts.",
+        "similar_artists": ["Royal Blood", "Foo Fighters"],
+        "best_for": ["gym sessions", "running", "high-energy moments"],
+        "vibe_tags": ["powerful", "raw", "electrifying"]
+    },
+    {
+        "song_id": 4,
+        "title": "Library Rain",
+        "artist": "Paper Lanterns",
+        "description": "Gentle lofi beats layered with rain sounds and soft acoustic guitar. A cozy companion for reading or winding down.",
+        "similar_artists": ["Kina", "Tomppabeats"],
+        "best_for": ["reading", "relaxing", "rainy days"],
+        "vibe_tags": ["cozy", "peaceful", "warm"]
+    },
+    {
+        "song_id": 5,
+        "title": "Gym Hero",
+        "artist": "Max Pulse",
+        "description": "A pumped-up pop banger with punchy bass and motivational energy. Designed to keep you pushing through your last set.",
+        "similar_artists": ["Dua Lipa", "The Weeknd"],
+        "best_for": ["gym playlists", "running", "pregame hype"],
+        "vibe_tags": ["energetic", "bold", "anthemic"]
+    },
+    {
+        "song_id": 6,
+        "title": "Spacewalk Thoughts",
+        "artist": "Orbit Bloom",
+        "description": "A drifting ambient piece with layered pads and gentle textures. Perfect for meditation or staring out the window on a long flight.",
+        "similar_artists": ["Brian Eno", "Tycho"],
+        "best_for": ["meditation", "deep thinking", "sleep"],
+        "vibe_tags": ["ethereal", "spacious", "contemplative"]
+    },
+    {
+        "song_id": 7,
+        "title": "Coffee Shop Stories",
+        "artist": "Slow Stereo",
+        "description": "A warm jazz number with brushed drums and a wandering bass line. Feels like a Sunday morning at your favorite cafe.",
+        "similar_artists": ["Norah Jones", "Bill Evans"],
+        "best_for": ["coffee mornings", "brunch", "casual conversations"],
+        "vibe_tags": ["warm", "sophisticated", "easy-going"]
+    },
+    {
+        "song_id": 8,
+        "title": "Night Drive Loop",
+        "artist": "Neon Echo",
+        "description": "A moody synthwave track with retro arpeggios and a pulsing bassline. Evokes neon-lit highways and late-night city drives.",
+        "similar_artists": ["Kavinsky", "The Midnight"],
+        "best_for": ["night drives", "focus work", "aesthetic playlists"],
+        "vibe_tags": ["retro", "cinematic", "mysterious"]
+    },
+    {
+        "song_id": 9,
+        "title": "Focus Flow",
+        "artist": "LoRoom",
+        "description": "A steady, hypnotic lofi groove with subtle percussion and airy synths. Engineered for deep concentration and flow states.",
+        "similar_artists": ["Quickly Quickly", "Jinsang"],
+        "best_for": ["deep work", "writing", "studying"],
+        "vibe_tags": ["minimal", "focused", "steady"]
+    },
+    {
+        "song_id": 10,
+        "title": "Rooftop Lights",
+        "artist": "Indigo Parade",
+        "description": "A breezy indie pop track with jangly guitars and uplifting harmonies. Captures the feeling of a warm evening on a city rooftop.",
+        "similar_artists": ["Vampire Weekend", "Phoenix"],
+        "best_for": ["summer playlists", "parties", "golden hour"],
+        "vibe_tags": ["carefree", "sunny", "vibrant"]
+    },
+    {
+        "song_id": 11,
+        "title": "Golden Hour",
+        "artist": "Velvet Skies",
+        "description": "A smooth R&B ballad with silky vocals and lush production. Made for slow dances and sunset moments with someone special.",
+        "similar_artists": ["SZA", "Daniel Caesar"],
+        "best_for": ["date nights", "sunset drives", "chill evenings"],
+        "vibe_tags": ["romantic", "smooth", "intimate"]
+    },
+    {
+        "song_id": 12,
+        "title": "Bass Drop City",
+        "artist": "DJ Axiom",
+        "description": "An explosive EDM banger with massive drops and festival-ready energy. Will have any crowd jumping from the first beat.",
+        "similar_artists": ["Martin Garrix", "Illenium"],
+        "best_for": ["festivals", "parties", "pre-game hype"],
+        "vibe_tags": ["explosive", "euphoric", "massive"]
+    },
+    {
+        "song_id": 13,
+        "title": "Dust and Diesel",
+        "artist": "Prairie Wire",
+        "description": "A nostalgic country ballad with steel guitar and heartfelt storytelling. Evokes dirt roads, open fields, and small-town memories.",
+        "similar_artists": ["Zach Bryan", "Tyler Childers"],
+        "best_for": ["road trips", "bonfires", "quiet reflection"],
+        "vibe_tags": ["heartfelt", "rustic", "storytelling"]
+    },
+    {
+        "song_id": 14,
+        "title": "Requiem in D",
+        "artist": "Aria Strings",
+        "description": "A deeply moving classical piece with soaring strings and a sorrowful melody. Evokes quiet grief and profound beauty.",
+        "similar_artists": ["Max Richter", "Ludovico Einaudi"],
+        "best_for": ["reflection", "writing", "emotional processing"],
+        "vibe_tags": ["somber", "beautiful", "profound"]
+    },
+    {
+        "song_id": 15,
+        "title": "Iron Cage",
+        "artist": "Skull Voltage",
+        "description": "A ferocious metal track with blast beats, crushing riffs, and guttural intensity. Pure sonic aggression for those who need it.",
+        "similar_artists": ["Gojira", "Lamb of God"],
+        "best_for": ["heavy workouts", "stress release", "headbanging"],
+        "vibe_tags": ["brutal", "intense", "cathartic"]
+    },
+    {
+        "song_id": 16,
+        "title": "Backyard Summer",
+        "artist": "The Porch Band",
+        "description": "A cheerful folk tune with acoustic guitar, handclaps, and singalong harmonies. Feels like lemonade on a porch swing.",
+        "similar_artists": ["Lumineers", "Vance Joy"],
+        "best_for": ["barbecues", "picnics", "weekend mornings"],
+        "vibe_tags": ["joyful", "wholesome", "breezy"]
+    },
+    {
+        "song_id": 17,
+        "title": "Neon Pulse",
+        "artist": "Synth Lords",
+        "description": "A relentless EDM track with aggressive synth stabs and driving four-on-the-floor beats. Built for peak-hour dancefloors.",
+        "similar_artists": ["deadmau5", "Eric Prydz"],
+        "best_for": ["clubs", "late-night energy", "intense focus"],
+        "vibe_tags": ["relentless", "hypnotic", "powerful"]
+    },
+    {
+        "song_id": 18,
+        "title": "Slow Burn",
+        "artist": "Amber Nights",
+        "description": "A sultry R&B track with moody keys and a simmering groove. Perfect for dimly lit rooms and late-night introspection.",
+        "similar_artists": ["Frank Ocean", "The Weeknd"],
+        "best_for": ["late nights", "introspection", "mood playlists"],
+        "vibe_tags": ["sultry", "atmospheric", "smoldering"]
+    },
+    {
+        "song_id": 19,
+        "title": "Southbound Train",
+        "artist": "Hank Rivers",
+        "description": "An easy-going country track with rolling fingerpicking and a mellow vocal delivery. Great for long drives through open country.",
+        "similar_artists": ["Chris Stapleton", "Colter Wall"],
+        "best_for": ["road trips", "lazy afternoons", "unwinding"],
+        "vibe_tags": ["laid-back", "warm", "authentic"]
+    },
+    {
+        "song_id": 20,
+        "title": "Concrete Jungle",
+        "artist": "MC Flowstate",
+        "description": "A hard-hitting hip-hop track with dense wordplay and a heavy, bass-driven beat. Captures the grit and hustle of city life.",
+        "similar_artists": ["Kendrick Lamar", "J. Cole"],
+        "best_for": ["gym sessions", "commuting", "motivation"],
+        "vibe_tags": ["gritty", "confident", "sharp"]
+    },
+    {
+        "song_id": 21,
+        "title": "Late Night Jazz",
+        "artist": "Blue Note Trio",
+        "description": "A cool jazz piece with breathy saxophone and gentle piano comping. Evokes a dimly lit jazz club after midnight.",
+        "similar_artists": ["Miles Davis", "Chet Baker"],
+        "best_for": ["evening relaxation", "dinner parties", "winding down"],
+        "vibe_tags": ["cool", "intimate", "sophisticated"]
+    },
+    {
+        "song_id": 22,
+        "title": "Campfire Stories",
+        "artist": "Timber Folk",
+        "description": "A wistful folk ballad with fingerpicked guitar and warm harmonies. Feels like sharing stories around a crackling fire under the stars.",
+        "similar_artists": ["Iron & Wine", "Fleet Foxes"],
+        "best_for": ["camping trips", "quiet evenings", "nostalgia"],
+        "vibe_tags": ["wistful", "warm", "grounding"]
+    },
+    {
+        "song_id": 23,
+        "title": "Pixel Dreams",
+        "artist": "Chiptune Kid",
+        "description": "A bouncy electronic track with 8-bit melodies and playful arpeggios. A blast of cheerful energy straight from a retro arcade.",
+        "similar_artists": ["Anamanaguchi", "Porter Robinson"],
+        "best_for": ["gaming", "creative work", "upbeat moments"],
+        "vibe_tags": ["playful", "retro", "colorful"]
+    },
+    {
+        "song_id": 24,
+        "title": "Velvet Underground",
+        "artist": "Smooth Collective",
+        "description": "A lush R&B groove with velvety pads and a relaxed vocal delivery. Like sinking into a comfortable chair after a long day.",
+        "similar_artists": ["Erykah Badu", "D'Angelo"],
+        "best_for": ["unwinding", "chill evenings", "soul playlists"],
+        "vibe_tags": ["smooth", "rich", "soulful"]
+    },
+    {
+        "song_id": 25,
+        "title": "Thunder Road",
+        "artist": "Voltline",
+        "description": "An anthemic rock track with soaring guitar solos and a triumphant chorus. Built for windows down, volume up moments.",
+        "similar_artists": ["Queens of the Stone Age", "The Black Keys"],
+        "best_for": ["road trips", "celebrations", "feeling unstoppable"],
+        "vibe_tags": ["triumphant", "anthemic", "exhilarating"]
+    },
+    {
+        "song_id": 26,
+        "title": "Still Waters",
+        "artist": "Orbit Bloom",
+        "description": "A meditative ambient piece with slow-evolving textures and deep sub-bass. Captures the stillness of a fog-covered lake at dawn.",
+        "similar_artists": ["Stars of the Lid", "Grouper"],
+        "best_for": ["meditation", "sleep", "deep relaxation"],
+        "vibe_tags": ["serene", "vast", "introspective"]
+    },
+    {
+        "song_id": 27,
+        "title": "Club Infinity",
+        "artist": "DJ Axiom",
+        "description": "A euphoric EDM anthem with soaring melodies and a massive breakdown. The kind of track that makes an entire festival sing along.",
+        "similar_artists": ["Avicii", "Calvin Harris"],
+        "best_for": ["festivals", "celebrations", "peak energy moments"],
+        "vibe_tags": ["euphoric", "uplifting", "massive"]
+    },
+    {
+        "song_id": 28,
+        "title": "Street Poetry",
+        "artist": "MC Flowstate",
+        "description": "A reflective hip-hop track with jazzy samples and introspective bars. Blends street wisdom with poetic vulnerability.",
+        "similar_artists": ["Nas", "Saba"],
+        "best_for": ["evening walks", "reflection", "lyric appreciation"],
+        "vibe_tags": ["thoughtful", "poetic", "raw"]
+    },
+    {
+        "song_id": 29,
+        "title": "Morning Meadow",
+        "artist": "Paper Lanterns",
+        "description": "A gentle folk tune with bright acoustic strumming and birdsong-like melodies. Like stepping outside on a fresh spring morning.",
+        "similar_artists": ["Bon Iver", "First Aid Kit"],
+        "best_for": ["morning routines", "nature walks", "fresh starts"],
+        "vibe_tags": ["fresh", "gentle", "hopeful"]
+    },
+    {
+        "song_id": 30,
+        "title": "Moonlight Sonata Remix",
+        "artist": "Aria Strings",
+        "description": "A modern reimagining of Beethoven's classic with ambient electronics and subtle string arrangements. Bridges centuries of music beautifully.",
+        "similar_artists": ["Olafur Arnalds", "Nils Frahm"],
+        "best_for": ["evening study", "wind-down routines", "contemplation"],
+        "vibe_tags": ["elegant", "timeless", "soothing"]
+    }
+]
