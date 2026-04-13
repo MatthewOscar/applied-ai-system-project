@@ -1,175 +1,144 @@
-# Music Recommender Simulation
+# VibeFinder 2.0 - Applied AI Music Recommender System
+
+## Base Project
+
+This project extends **VibeFinder 1.0** from Module 3 (Music Recommender Simulation). The original system was a content-based song recommender that scored songs against user taste profiles using weighted genre, mood, energy, and acousticness matching, then returned top-ranked results with static score breakdowns. It used a 10-song catalog and 3 hardcoded user profiles.
 
 ## Project Summary
 
-A content-based music recommender that scores songs against a user taste profile using weighted genre, mood, and energy matching, then returns the top-ranked results with explanations.
+**VibeFinder 2.0** evolves the original recommender into a full applied AI system by adding:
 
----
+- **RAG-powered explanations** - Retrieves rich song context from a knowledge base and uses Google Gemini to generate natural-language recommendation explanations
+- **Confidence scoring** - Each recommendation includes a 0-1 confidence score indicating how well-supported the match is across multiple dimensions
+- **Expanded catalog** - 30 songs across 13 genres (up from 10 songs across 7 genres)
+- **Evaluation harness** - Automated checks for consistency, score distribution, confidence calibration, explanation quality, and knowledge base coverage
 
-## How The System Works
+## Architecture Overview
 
-- **Song features:** genre, mood, energy (0-1), acousticness (0-1)
-- **User profile:** favorite genre, favorite mood, target energy, acoustic preference
-- **Scoring:** genre match +2.0, mood match +1.0, energy similarity up to +1.0, acoustic bonus +0.5
-- **Ranking:** sort all songs by score descending, return top k
+![System Architecture](assets/architecture.png)
 
----
+**Data flow:** User profile -> `recommender.py` (score & rank) -> `confidence.py` (compute confidence) -> mode selection: Classic returns static score breakdowns, AI-Enhanced retrieves from `song_knowledge.json` and calls Gemini API for natural explanations -> `evaluate.py` runs automated quality checks.
 
-## Getting Started
+## Setup Instructions
 
-### Setup
-
-1. Create a virtual environment:
-
-   ```bash
-   python3 -m venv .venv
-   source .venv/bin/activate      # Mac or Linux
-   .venv\Scripts\activate         # Windows
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. Run the app:
-
-   ```bash
-   python -m src.main
-   ```
-
-### Running Tests
+### 1. Clone and create virtual environment
 
 ```bash
-pytest tests/test_recommender.py -v
+git clone https://github.com/MatthewOscar/applied-ai-system-project.git
+cd applied-ai-system-project
+python3 -m venv .venv
+source .venv/bin/activate      # Mac/Linux
+# .venv\Scripts\activate       # Windows
 ```
 
----
+### 2. Install dependencies
 
-## Experiments You Tried
+```bash
+pip install -r requirements.txt
+```
 
-Genre weight shift (2.0 -> 0.5) for Pop Happy user: "Rooftop Lights" (mood match) jumped from #3 to #2, passing "Gym Hero" (genre match only). Confirms genre weight is the dominant ranking factor.
+### 3. Configure API key (optional, for AI-Enhanced mode)
 
----
+```bash
+cp .env.example .env
+# Edit .env and add your GEMINI_API_KEY
+```
 
-## Limitations and Risks
+The system works without an API key -- it falls back to static explanations in Classic mode.
 
-- 10-song catalog, lofi/chill heavy
-- Exact genre matching only
-- No tempo, valence, or artist diversity in scoring
+### 4. Run the system
 
-See [model_card.md](model_card.md) for more detail.
+```bash
+python -m src.main
+```
 
----
+Select mode 1 (Classic) or mode 2 (AI-Enhanced) when prompted.
+
+### 5. Run tests
+
+```bash
+pytest tests/ -v
+```
+
+### 6. Run evaluation
+
+```bash
+python evaluate.py
+```
+
+## Sample Interactions
+
+### Classic Mode
+
+```
+Profile: Pop Happy Listener
+Preferences: {'genre': 'pop', 'mood': 'happy', 'energy': 0.8}
+
+Top recommendations:
+
+  1. Sunrise City by Neon Echo - Score: 3.98
+     Because: Genre match (pop): +2.0; Mood match (happy): +1.0; Energy similarity: +0.98
+
+  2. Gym Hero by Max Pulse - Score: 2.87
+     Because: Genre match (pop): +2.0; Energy similarity: +0.87
+
+  3. Rooftop Lights by Indigo Parade - Score: 2.96
+     Because: Mood match (happy): +1.0; Energy similarity: +0.96
+```
+
+### AI-Enhanced Mode
+
+```
+Profile: Pop Happy Listener
+Preferences: {'genre': 'pop', 'mood': 'happy', 'energy': 0.8}
+
+Top recommendations:
+
+  1. Sunrise City by Neon Echo - Score: 3.98 | Confidence: High (85%)
+     Sunrise City is an excellent match for your pop/happy preferences -- its
+     shimmering synths and feel-good energy closely align with your target. Think
+     of it as the musical equivalent of a sunny morning drive with CHVRCHES vibes.
+
+  2. Gym Hero by Max Pulse - Score: 2.87 | Confidence: Medium (60%)
+     While Gym Hero matches your pop genre preference, its intense mood differs
+     from your happy target. However, its high energy level is close to what
+     you're looking for, making it a solid workout companion.
+```
+
+### Evaluation Report
+
+```
+VIBEFINDER 2.0 - EVALUATION REPORT
+============================================================
+  [PASS] Consistency: 5 passed, 0 failed
+  [PASS] Score Distribution: 5 passed, 0 failed
+  [PASS] Confidence Calibration: 5 passed, 0 failed
+  [PASS] Explanation Quality: 15 passed, 0 failed
+  [PASS] Knowledge Base Coverage: 30 passed, 0 failed
+------------------------------------------------------------
+  TOTAL: 60/60 checks passed
+  All checks passed!
+```
+
+## Design Decisions
+
+- **Why RAG over pure generation:** Grounding Gemini's explanations in a knowledge base (song descriptions, similar artists, vibe tags) prevents hallucination and produces more specific, accurate explanations.
+- **Why confidence scoring:** The recommendation score ranks songs, but confidence (0-1) tells users how *certain* the system is. A song can rank #1 with medium confidence if it only matches on genre + energy but misses mood.
+- **Why Gemini 2.5 Flash:** Cost-effective, fast, and sufficient quality for short 2-3 sentence explanations. Matches the pattern used in our Module 4 DocuBot project.
+- **Graceful degradation:** The system works fully without an API key. Classic mode uses static explanations; AI-Enhanced mode falls back to static if the API is unavailable. This ensures reproducibility.
+- **Expanded catalog:** 30 songs across 13 genres addresses the original bias toward lofi/chill and provides more meaningful recommendation variety.
+
+## Testing Summary
+
+- **9 unit tests passing** (2 original + 3 confidence + 4 RAG explainer)
+- **60/60 evaluation checks passing** across 5 categories
+- Confidence scores averaged 0.6-0.85 for genre-matched songs; edge cases (no genre match) correctly scored Low confidence
+- System handles missing API key gracefully without errors
 
 ## Reflection
 
-See [model_card.md](model_card.md).
+See [model_card.md](model_card.md) for detailed reflection on AI collaboration, limitations, and system design.
 
----
+## Demo Walkthrough
 
-## 7. `model_card_template.md`
-
-Combines reflection and model card framing from the Module 3 guidance. :contentReference[oaicite:2]{index=2}
-
-```markdown
-# 🎧 Model Card - Music Recommender Simulation
-
-## 1. Model Name
-
-Give your recommender a name, for example:
-
-> VibeFinder 1.0
-
----
-
-## 2. Intended Use
-
-- What is this system trying to do
-- Who is it for
-
-Example:
-
-> This model suggests 3 to 5 songs from a small catalog based on a user's preferred genre, mood, and energy level. It is for classroom exploration only, not for real users.
-
----
-
-## 3. How It Works (Short Explanation)
-
-Describe your scoring logic in plain language.
-
-- What features of each song does it consider
-- What information about the user does it use
-- How does it turn those into a number
-
-Try to avoid code in this section, treat it like an explanation to a non programmer.
-
----
-
-## 4. Data
-
-Describe your dataset.
-
-- How many songs are in `data/songs.csv`
-- Did you add or remove any songs
-- What kinds of genres or moods are represented
-- Whose taste does this data mostly reflect
-
----
-
-## 5. Strengths
-
-Where does your recommender work well
-
-You can think about:
-- Situations where the top results "felt right"
-- Particular user profiles it served well
-- Simplicity or transparency benefits
-
----
-
-## 6. Limitations and Bias
-
-Where does your recommender struggle
-
-Some prompts:
-- Does it ignore some genres or moods
-- Does it treat all users as if they have the same taste shape
-- Is it biased toward high energy or one genre by default
-- How could this be unfair if used in a real product
-
----
-
-## 7. Evaluation
-
-How did you check your system
-
-Examples:
-- You tried multiple user profiles and wrote down whether the results matched your expectations
-- You compared your simulation to what a real app like Spotify or YouTube tends to recommend
-- You wrote tests for your scoring logic
-
-You do not need a numeric metric, but if you used one, explain what it measures.
-
----
-
-## 8. Future Work
-
-If you had more time, how would you improve this recommender
-
-Examples:
-
-- Add support for multiple users and "group vibe" recommendations
-- Balance diversity of songs instead of always picking the closest match
-- Use more features, like tempo ranges or lyric themes
-
----
-
-## 9. Personal Reflection
-
-A few sentences about what you learned:
-
-- What surprised you about how your system behaved
-- How did building this change how you think about real music recommenders
-- Where do you think human judgment still matters, even if the model seems "smart"
+*Loom video link: [TBD]*
